@@ -1,0 +1,11 @@
+public class Round
+{
+Player guesser;
+
+    public Round(Player guesser)
+    {
+    this.guesser = guesser;
+    guesser.guess();
+    }
+
+}

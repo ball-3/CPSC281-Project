@@ -1,0 +1,26 @@
+public class Guess
+{
+boolean isCorrect;  //plis rename ;-;
+char guessedLetter;
+string word;
+char[] letters;
+
+    public Guess(char guessedLetter, string word)
+    {
+    this.word = word;
+    this.guessedLetter = guessedLetter;
+    
+    checkCorrectness();
+    }
+    
+    private void checkCorrectness()
+    {
+    letters = word.toCharArray();
+    
+    for(int i = 0; i < letters.length; i++)
+        {
+        
+        }
+    
+    }
+}

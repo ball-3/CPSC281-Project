@@ -1,0 +1,64 @@
+public class Game()
+{
+	Player player1;
+	Player player2;
+	String word = null;
+    int maxGuesses
+	Guess[] guesses; 	//this could be a linkedList but [] is probably fine considering size
+	GameScreen gameScreen;		//NEEDS to be renamed, this is basically the in game screen with the hangman
+	Round tempRound;
+	boolean gameOver = false;
+	
+	Game(int[] gamemode)
+{
+//alter things here based on game parameters given
+//this will set the player1 and player2 as well ( to computer or whatever )
+//initialise maxGuesses
+//if we are using array for guesses, initialise guesses[] to guesses[maxGuesses]
+	}
+
+
+
+
+
+
+
+public void do()
+{
+    firstRound();
+    
+	do
+    {
+    tempRound = new Round(player2);
+    tempRound.do();
+
+    //update gui
+    checkGameStatus();
+	} while (!gameOver)
+}
+
+private void checkGameStatus()
+	{
+    if(guesses[maxGuesses-1] -1 != null)
+    {
+    gameOver = true; 
+    return;
+    }
+    
+    if(\\word is guessed)
+    {
+    gameOver = true;
+    return;
+    }
+    
+    }
+
+
+private void firstRound()
+    {
+    //whatever this method ends up being called, player1 (picker) selects a word
+    //ex: player1.pickword();
+    //update gui
+    }
+	
+}

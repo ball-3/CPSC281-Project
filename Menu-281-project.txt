@@ -1,0 +1,25 @@
+public void Menu
+{
+JFrame startFrame;
+//should have some kind of documentation for the gamemode options and the associated numbers
+int array gamemode = new int[//size of number of gamemode options];
+    
+
+    private void makeStartFrame()
+    {
+    JFrame startFrame = new JFrame();
+    startFrame.setLayout(); // what layout will i pick ? 
+    
+    //insert the button, image
+    
+    startFrame.setVisible(true);
+    }
+    
+    //there will be other methods here
+    
+    public int[] getGamemode()
+    {
+    return gamemode;
+    }
+
+}
