@@ -9,12 +9,10 @@ char[] letters;
     {
     this.word = word;
     this.guessedLetter = guessedLetter;
-    
-    
-    //atm it just checks correctness but this could be modified so that it returns an array of where the letter is, if that would be helpful (for hangman class?)
     checkCorrectness();
     }
     
+    //atm it just checks correctness but this could be modified so that it returns an array of where the letter is, if that would be helpful (for hangman class?)    
     private void checkCorrectness()
     {
     letters = word.toCharArray();
