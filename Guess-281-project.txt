@@ -10,6 +10,8 @@ char[] letters;
     this.word = word;
     this.guessedLetter = guessedLetter;
     
+    
+    //atm it just checks correctness but this could be modified so that it returns an array of where the letter is, if that would be helpful (for hangman class?)
     checkCorrectness();
     }
     
@@ -19,8 +21,12 @@ char[] letters;
     
     for(int i = 0; i < letters.length; i++)
         {
-        
+        if(letters[i] == guessedLetter)
+            {
+            isCorrect= true;
+            return;
+            }
         }
-    
+    isCorrect = false;
     }
 }
