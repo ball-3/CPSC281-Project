@@ -2,7 +2,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
-
 public class Word {
     private Tree wrongInput;
     private String word = "";
@@ -51,8 +50,8 @@ public class Word {
         for (int i = 0; i < word.length(); i++) {
             if (word.indexOf(i) == c) {
                 // tell gui to display the character
-                //apple -> P -> "p1p2"
-                send = send + c + i;
+                // apple -> P -> "p1p2"
+                send = send + "," + i;
             }
         }
         wrongInput.insert(c);
