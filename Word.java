@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -24,6 +25,10 @@ public class Word {
         category.add(computer_science);
     }
 
+    public String getWord() {
+        return word;
+    }
+
     public int getWrongNum() {
         return wrongInput.getSize();
     }
@@ -41,17 +46,18 @@ public class Word {
     }
 
     // maybe void
-    public boolean includedWord(char c) {
+    public String includedWord(char c) {
+        String send = "";
         for (int i = 0; i < word.length(); i++) {
             if (word.indexOf(i) == c) {
                 // tell gui to display the character
-
-                return true;
+                //apple -> P -> "p1p2"
+                send = send + c + i;
             }
         }
         wrongInput.insert(c);
 
-        return false;
+        return null;
     }
 
 }
