@@ -16,6 +16,7 @@ public class Hangman extends JFrame implements ActionListener {
         this.word = w;
         // if the word is apple, it will makes currentDispay = "00000"
         // social psychology -> "000000 00000"
+        //comment
         for (int i = 0; i < w.getWord().length(); i++) {
             if (w.getWord().charAt(i) != ' ') {
                 currentDisplay = currentDisplay + '0';
