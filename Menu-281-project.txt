@@ -18,7 +18,15 @@ int array gamemode = new int[//size of number of gamemode options];
     }
     
     //there will be other methods here
-    
+    /*
+    Gamemode Settings:
+    Array Index:    Information Stored Here:        Equivalence to Int Value:
+            0               null                        null
+            1       if player1 is human/computer        0 - computer, 1 - human
+            2       if player2 is human/computer        0 - computer, 1 - human
+            3       if player1 is guesser/ picker       0 - guesser, 1 - picker
+            4               null so far
+    */
     public int[] getGamemode()
     {
     return gamemode;
