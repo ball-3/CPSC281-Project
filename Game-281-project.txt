@@ -18,20 +18,11 @@ public class Game()
 //if we are using array for guesses, initialise guesses[] to guesses[maxGuesses]
 
 	this.gamemode = gamemode;
-	if (gamemode[3] == 0)	//player1 is picker
-	{
+		
 		if (gamemode[1] == 0)	player1 = new ComputerPicker();
 		else player1 = new HumanPicker();
 		if (gamemode[2] == 0)	player2 = new ComputerGuesser();
 		else player2 = new HumanGuesser();
-	}
-	else //player2 is picker
-	{
-		if (gamemode[1] == 0)	player1 = new ComputerGuesser;
-		else player1 = new HumanGuesser();
-		if (gamemode[2] == 0)	player2 = new ComputerPicker();
-		else player2 = new HumanPicker();
-	}
 	}
 
 
