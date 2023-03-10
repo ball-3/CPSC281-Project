@@ -26,4 +26,14 @@ char[] letters;
         }
     isCorrect = false;
     }
+    
+    public boolean isCorrect()
+    {
+    return isCorrect;
+    }
+    
+    public char guessedLetter()
+    {
+    return guessedLetter;
+    }
 }
