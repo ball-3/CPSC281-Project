@@ -1,6 +1,8 @@
 public void Menu implements ActionListener
 {
 JFrame startFrame;
+JButton startButton;
+JButton settingsButton;
 Game game;
 //should have some kind of documentation for the gamemode options and the associated numbers
 int array gamemode = new int[//size of number of gamemode options];
@@ -12,7 +14,9 @@ int array gamemode = new int[//size of number of gamemode options];
     GridBagConstraints constraints = new GridBagConstraints();
     //set the constraints
     
-    //insert the button, image
+    //insert the buttons, ?image?
+    startFrame.add(startButton);
+    startFrame.add(settingsButton);
     
     startFrame.setVisible(true);
     }
@@ -22,10 +26,9 @@ int array gamemode = new int[//size of number of gamemode options];
     Gamemode Settings:
     Array Index:    Information Stored Here:        Equivalence to Int Value:
             0               null                        null
-            1       if player1 is human/computer        0 - computer, 1 - human
+            1       if player1 is human/computer        0 - computer, 1 - human     note: player1 is always picker.
             2       if player2 is human/computer        0 - computer, 1 - human
-            3       if player1 is guesser/ picker       0 - guesser, 1 - picker
-            4               null so far
+            3               null so far
     */
     public int[] getGamemode()
     {
