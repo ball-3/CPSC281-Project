@@ -1,20 +1,37 @@
 public class Game()
 {
+	int[] gamemode;
 	Player player1;
 	Player player2;
 	String word = null;
-    int maxGuesses
+    	int maxGuesses
 	Guess[] guesses; 	//this could be a linkedList but [] is probably fine considering size
 	GameScreen gameScreen;		//NEEDS to be renamed, this is basically the in game screen with the hangman
 	Round tempRound;
 	boolean gameOver = false;
 	
 	Game(int[] gamemode)
-{
+	{
 //alter things here based on game parameters given
 //this will set the player1 and player2 as well ( to computer or whatever )
 //initialise maxGuesses
 //if we are using array for guesses, initialise guesses[] to guesses[maxGuesses]
+
+	this.gamemode = gamemode;
+	if (gamemode[3] == 0)	//player1 is picker
+	{
+		if (gamemode[1] == 0)	player1 = new ComputerPicker();
+		else player1 = new HumanPicker();
+		if (gamemode[2] == 0)	player2 = new ComputerGuesser();
+		else player2 = new HumanGuesser();
+	}
+	else //player2 is picker
+	{
+		if (gamemode[1] == 0)	player1 = new ComputerGuesser;
+		else player1 = new HumanGuesser();
+		if (gamemode[2] == 0)	player2 = new ComputerPicker();
+		else player2 = new HumanPicker();
+	}
 	}
 
 
