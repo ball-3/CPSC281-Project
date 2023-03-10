@@ -7,8 +7,9 @@ int array gamemode = new int[//size of number of gamemode options];
 
     private void makeStartFrame()
     {
-    JFrame startFrame = new JFrame();
-    startFrame.setLayout(); // what layout will i pick ? 
+    JFrame startFrame = new JFrame(new GridBagLayout());
+    GridBagConstraints constraints = new GridBagConstraints();
+    //set the constraints
     
     //insert the button, image
     
