@@ -14,7 +14,7 @@ public class Word {
     }
 
     Word(int level) {
-        generateNewRandomWord(level);
+        
         String[] fruit = { "fruit", "apple", "banana", "blueberry", "orange", "mango", "lychee" };
         String[] popular_artist = { "popular artist", "Taylor Swift", "Billie Eilish", "Ariana Grande", "Adele",
                 "Olivia Rodrigo", "Dua Lipa", "Harry Styles" };
@@ -22,6 +22,7 @@ public class Word {
         category.add(fruit);
         category.add(popular_artist);
         category.add(computer_science);
+        generateNewRandomWord(level);
     }
 
     public String getWord() {
@@ -38,9 +39,15 @@ public class Word {
 
     private void generateNewRandomWord(int level) {
         Random random = new Random();
-        String[] picked = category.get(random.nextInt(category.size()));
+        String[] picked = category.get(1);
         categoryName = picked[0];
-        word = picked[random.nextInt(1, picked.length)];
+        int rand;
+        while (true){
+            rand = random.nextInt(picked.length);
+            if(rand !=0) break;
+        }
+        word = picked[rand];
+        System.out.println(word);
 
     }
 

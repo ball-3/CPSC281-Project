@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
         
-        Word word = new Word("computer science");
+        Word word = new Word(1);
 
         Hangman display = new Hangman(word);
 
@@ -23,7 +23,7 @@ public class Main {
         f.setTitle("project");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
-        //f.repaint();
+        
     
 }
 }
