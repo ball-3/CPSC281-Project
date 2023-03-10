@@ -6,10 +6,11 @@ import java.awt.event.ActionListener;
 public class Hangman extends JFrame implements ActionListener {
 
     private Draw draw;
-    private int currentLevel = 0;
+    private int currentLevel = 20;
     private char input;
     private Word word;
     private String currentDisplay = "";
+    public JFrame frame;
 
     Hangman(Word w) {
         this.draw = new Draw(currentLevel);
@@ -23,13 +24,14 @@ public class Hangman extends JFrame implements ActionListener {
                 currentDisplay = currentDisplay + ' ';
             }
         }
+        createGUI();
     }
 
     public void createGUI() {
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel mainPanel = new JPanel();
+        JPanel mainPanel = new JPanel( new BorderLayout());
         JPanel hangmanPanel = new JPanel();
         JPanel wrongWordPanel = new JPanel();
         JPanel wordPanel = charBox(currentDisplay);
@@ -38,13 +40,21 @@ public class Hangman extends JFrame implements ActionListener {
         JButton button = new JButton("submit");
 
         // size panel
-        mainPanel.setSize(1000, 800);
-        hangmanPanel.setSize(500, 500);
-        wrongWordPanel.setSize(500, 500);
-        inputPanel.setSize(1000, 150);
-        wordPanel.setSize(1000, 150);
+        mainPanel.setPreferredSize(new Dimension(1000, 800));
+        
+        hangmanPanel.setPreferredSize(new Dimension(600, 600));
+        wrongWordPanel.setPreferredSize(new Dimension(400, 600));
+        inputPanel.setPreferredSize(new Dimension(1000, 150));
+        wordPanel.setPreferredSize(new Dimension(1000, 150));
+        
+       
 
         button.addActionListener(null);
+        //set color
+        mainPanel.setBackground(Color.BLACK);
+        hangmanPanel.setBackground(Color.white);
+        wrongWordPanel.setBackground(Color.CYAN);
+        
 
         // provide input
         button.addActionListener(new ActionListener() {
@@ -59,18 +69,12 @@ public class Hangman extends JFrame implements ActionListener {
         hangmanPanel.add(draw);
 
         // add everything
-        mainPanel.add(hangmanPanel, BorderLayout.LINE_START);
-        mainPanel.add(wrongWordPanel, BorderLayout.CENTER);
+        mainPanel.add(hangmanPanel, BorderLayout.CENTER);
+        mainPanel.add(wrongWordPanel, BorderLayout.LINE_START);
         mainPanel.add(wordPanel, BorderLayout.PAGE_END);
         mainPanel.add(inputPanel, BorderLayout.PAGE_START);
         frame.add(mainPanel);
-
-        // default
-        frame.setTitle("Hangman game");
-
-        frame.setLocationRelativeTo(null);
-        frame.setMinimumSize(new Dimension(1000, 800));
-        frame.setVisible(true);
+        
 
     }
 
