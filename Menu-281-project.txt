@@ -1,6 +1,7 @@
-public void Menu
+public void Menu implements ActionListener
 {
 JFrame startFrame;
+Game game;
 //should have some kind of documentation for the gamemode options and the associated numbers
 int array gamemode = new int[//size of number of gamemode options];
     
@@ -22,5 +23,11 @@ int array gamemode = new int[//size of number of gamemode options];
     {
     return gamemode;
     }
-
+       
+     //this is assuming this is only called when the appropriate button is clicked, sort out having different ActionPerformed methods for different buttons
+    public void ActionPerformed(ActionEvent e)
+    {
+    game = new Game(gamemode);
+    //do i need to close or clear the frame/ window now ?
+    }
 }
