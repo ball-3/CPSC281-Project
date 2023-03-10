@@ -8,6 +8,8 @@ Game game;
 String actionCommand;
 //should have some kind of documentation for the gamemode options and the associated numbers
 int array gamemode = new int[//size of number of gamemode options];
+
+//frame 1000 by 800
     
 
     private void makeStartFrame()
