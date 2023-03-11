@@ -12,7 +12,7 @@ public class CharacterBoxPanel extends JPanel {
         setBackground(Color.white);
 
         for (int i = 0; i < w.length(); i++) {
-            CharacterBox box = new CharacterBox(w.charAt(i), 2, 2);
+            CharacterBox box = new CharacterBox(w.charAt(i));
             boxes.add(box);
             add(box);
             // add(new JButton());

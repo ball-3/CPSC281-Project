@@ -4,19 +4,13 @@ import java.awt.*;
 public class CharacterBox extends JComponent {
 
     private char boxWord;
-    private int x;
-    private int y;
-    private int yForNum;
     private boolean isGuessed = false;
 
-    public CharacterBox(char c, int xAxis, int yAxis) {
+    public CharacterBox(char c) {
         setPreferredSize(new Dimension(40, 40));
         boxWord = c;
         if (c == ' ')
             isGuessed = true;
-        this.x = xAxis;
-        this.y = yAxis;
-        yForNum = yAxis + 50;
     }
 
     public void paintComponent(Graphics g) {

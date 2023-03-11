@@ -1,6 +1,5 @@
-import java.util.Stack;
 
-class Node<Character> {
+class Node {
     public char iData;              // data item (key)
     public Node leftChild;         // this node’s left child
     public Node rightChild;        // this node’s right child
