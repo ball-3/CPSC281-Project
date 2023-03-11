@@ -3,11 +3,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Word {
-    private Tree wrongInput;
+    private BinarySearchTree wrongInput = new BinarySearchTree();
     private String word = "";
     private ArrayList<String[]> category = new ArrayList<String[]>();
     private String categoryName;
     private int CharNum;
+
+    
 
     Word(String word) {
         this.word = word;
@@ -30,7 +32,7 @@ public class Word {
     }
 
     public int getWrongNum() {
-        return wrongInput.getSize();
+        return wrongInput.size;
     }
 
     public int getCharNum() {
@@ -52,18 +54,19 @@ public class Word {
     }
 
     // maybe void
-    public String includedWord(char c) {
-        String send = "";
+    public ArrayList<Integer> indexesOfCharacter(char c) {
+        ArrayList<Integer> send = new ArrayList<Integer>();
         for (int i = 0; i < word.length(); i++) {
-            if (word.indexOf(i) == c) {
+            if (word.charAt(i) == c) {
                 // tell gui to display the character
-                // apple -> P -> "p1p2"
-                send = send + "," + i;
+                send.add(i);
             }
         }
+        if (send.size()==0)
         wrongInput.insert(c);
+        
 
-        return null;
+        return send;
     }
 
 }
