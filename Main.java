@@ -19,7 +19,7 @@ public class Main {
 
 
 
-        f.setSize(1000, 800);
+        f.setSize(1000, 650);
         f.setTitle("project");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);

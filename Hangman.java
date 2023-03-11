@@ -1,4 +1,7 @@
 import javax.swing.*;
+import javax.swing.text.*;
+
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,22 +33,25 @@ public class Hangman extends JFrame implements ActionListener {
     public void createGUI() {
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Font defult = new Font(currentDisplay, Font.BOLD, 25);
 
         JPanel mainPanel = new JPanel( new BorderLayout());
         JPanel hangmanPanel = new JPanel();
         JPanel wrongWordPanel = new JPanel();
         JPanel wordPanel = charBox(currentDisplay);
-        JPanel inputPanel = new JPanel();
+        JPanel inputPanel = new JPanel(new FlowLayout());
         JTextField textField = new JTextField();
+        textField.setDocument(new JTextFieldLimit(1));
+        textField.setFont(defult);
         JButton button = new JButton("submit");
 
         // size panel
         mainPanel.setPreferredSize(new Dimension(1000, 800));
-        
         hangmanPanel.setPreferredSize(new Dimension(600, 600));
         wrongWordPanel.setPreferredSize(new Dimension(400, 600));
-        inputPanel.setPreferredSize(new Dimension(1000, 150));
-        wordPanel.setPreferredSize(new Dimension(1000, 150));
+        inputPanel.setPreferredSize(new Dimension(1000, 60));
+        wordPanel.setPreferredSize(new Dimension(1000, 90));
+        textField.setPreferredSize(new Dimension(40, 40)); 
         
        
 
@@ -65,7 +71,8 @@ public class Hangman extends JFrame implements ActionListener {
         });
 
         // ask for only one char
-        inputPanel.add(textField, button);
+        inputPanel.add(textField);
+        inputPanel.add(button);
         hangmanPanel.add(draw);
 
         // add everything
@@ -77,6 +84,7 @@ public class Hangman extends JFrame implements ActionListener {
         
 
     }
+
 
     public void makeWord(char c, Word w) {
         // includedWord will return "1,2" if word apple and character is p
@@ -127,3 +135,25 @@ public class Hangman extends JFrame implements ActionListener {
     }
 
 }
+
+class JTextFieldLimit extends PlainDocument {
+
+    private int limit;
+    JTextFieldLimit(int limit) {
+       super();
+       this.limit = limit;
+    }
+
+    JTextFieldLimit(int limit, boolean upper) {
+       super();
+       this.limit = limit;
+    }
+
+    public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+       if (str == null)
+          return;
+       if ((getLength() + str.length()) <= limit) {
+          super.insertString(offset, str, attr);
+       }
+    }
+ }
