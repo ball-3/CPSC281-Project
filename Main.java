@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Word word = new Word(23);
+        Word word = new Word(9);
 
         Hangman display = new Hangman(word);
 

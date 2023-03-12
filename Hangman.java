@@ -57,7 +57,6 @@ public class Hangman extends JFrame implements ActionListener {
         inputPanel.setPreferredSize(new Dimension(1000, 60));
         characterBoxPanel.setPreferredSize(new Dimension(1000, 90));
         textField.setPreferredSize(new Dimension(45, 45));
-        
 
         // set color
         mainPanel.setBackground(Color.BLACK);
@@ -76,7 +75,7 @@ public class Hangman extends JFrame implements ActionListener {
                 currentLevel = word.hangmanState();
                 draw.updateLevel(currentLevel);
                 hangmanPanel.repaint();
-                
+
             }
         });
 
@@ -94,15 +93,13 @@ public class Hangman extends JFrame implements ActionListener {
         wrongWordPanel.add(wrongInput);
 
         // add everything
+        mainPanel.add(characterBoxPanel, BorderLayout.PAGE_END);
         mainPanel.add(hangmanPanel, BorderLayout.CENTER);
         mainPanel.add(wrongWordPanel, BorderLayout.LINE_START);
-        mainPanel.add(characterBoxPanel, BorderLayout.PAGE_END);
         mainPanel.add(inputPanel, BorderLayout.PAGE_START);
         add(mainPanel);
 
     }
-
-    
 
     public void guessChar(char c, Word w) {
         // includedWord will return "1,2" if word apple and character is p

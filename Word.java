@@ -26,22 +26,23 @@ public class Word {
         String[] fruit = { "fruit", "apple", "banana", "blueberry", "orange", "mango", "lychee" };
         String[] popular_artist = { "popular artist", "Taylor Swift", "Billie Eilish", "Ariana Grande", "Adele",
                 "Olivia Rodrigo", "Dua Lipa", "Harry Styles" };
-        String[] computer_science = { "computer science", "linked list", "skip list", "recursion", };
+        String[] computer_science = { "computer science", "linked list", "skip list", "recursion","queues", "stack", "heap" 
+    , "AVL tree", "Warshalls Algorithm", "Floyd's algorithm"};
         category.add(fruit);
         category.add(popular_artist);
         category.add(computer_science);
         generateNewRandomWord();
         limitMistake = (level - 27) * -1;
-        System.out.println("limit is " + limitMistake+ "   level is "+ level);
-        stepSize = 27 /limitMistake;
-        nextState = 27% limitMistake;
+        System.out.println("limit is " + limitMistake + "   level is " + level);
+        stepSize = 27 / limitMistake;
+        nextState = 27 % limitMistake;
     }
 
     public int hangmanState() {
         if (wrongInput.getSize() == 0)
-        return 0;
-        nextState = nextState + stepSize*wrongInput.getSize();
-        System.out.println(nextState +" step is "+stepSize );
+            return 0;
+        nextState = stepSize * wrongInput.getSize();
+        System.out.println(nextState + " step is " + stepSize);
         return nextState;
     }
 
@@ -59,7 +60,7 @@ public class Word {
 
     private void generateNewRandomWord() {
         Random random = new Random();
-        String[] picked = category.get(1);
+        String[] picked = category.get(2);//computer science
         categoryName = picked[0];
         int rand;
         while (true) {
