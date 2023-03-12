@@ -72,7 +72,11 @@ class BinarySearchTree {
 
     private Node root; // first node of tree
     private String output = "";
-    public int size = 0;
+    private int size = 0;
+
+    public int getSize() {
+        return size;
+    }
 
     public BinarySearchTree() // constructor
     {

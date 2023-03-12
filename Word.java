@@ -8,6 +8,10 @@ public class Word {
     private ArrayList<String[]> category = new ArrayList<String[]>();
     private String categoryName;
     private int CharNum;
+    // use for hangman
+    private int limitMistake;
+    private int stepSize;
+    private int nextState = 0; // hangman drawing state
 
     public String getWrongInput() {
         return wrongInput.toString();
@@ -26,7 +30,19 @@ public class Word {
         category.add(fruit);
         category.add(popular_artist);
         category.add(computer_science);
-        generateNewRandomWord(level);
+        generateNewRandomWord();
+        limitMistake = (level - 27) * -1;
+        System.out.println("limit is " + limitMistake+ "   level is "+ level);
+        stepSize = 27 /limitMistake;
+        nextState = 27% limitMistake;
+    }
+
+    public int hangmanState() {
+        if (wrongInput.getSize() == 0)
+        return 0;
+        nextState = nextState + stepSize*wrongInput.getSize();
+        System.out.println(nextState +" step is "+stepSize );
+        return nextState;
     }
 
     public String getWord() {
@@ -34,14 +50,14 @@ public class Word {
     }
 
     public int getWrongNum() {
-        return wrongInput.size;
+        return wrongInput.getSize();
     }
 
     public int getCharNum() {
         return word.length();
     }
 
-    private void generateNewRandomWord(int level) {
+    private void generateNewRandomWord() {
         Random random = new Random();
         String[] picked = category.get(1);
         categoryName = picked[0];
@@ -56,7 +72,6 @@ public class Word {
 
     }
 
-    // maybe void
     public ArrayList<Integer> indexesOfCharacter(char c) {
         ArrayList<Integer> send = new ArrayList<Integer>();
         for (int i = 0; i < word.length(); i++) {

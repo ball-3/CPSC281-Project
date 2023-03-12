@@ -8,9 +8,12 @@ public class WrongInputJtext extends JTextField {
         this.word = w;
 
         setText(w);
-        setEditable(true);
+        setEditable(false);
         setBackground(Color.white);
         setFont(new Font("MS Comic Sans", Font.BOLD, 30));
+        setPreferredSize(new Dimension(200, 45));
+        
+
     }
 
     public void setWord(String word) {

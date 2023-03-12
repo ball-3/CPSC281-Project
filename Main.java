@@ -6,11 +6,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Word word = new Word(1);
+        Word word = new Word(23);
 
         Hangman display = new Hangman(word);
-
-        JPanel p = new Draw(20);
 
         display.setSize(1000, 650);
         display.setTitle("project");

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Hangman extends JFrame implements ActionListener {
 
     private Draw draw;
-    private int currentLevel = 20;
+    private int currentLevel = 0;
     private char input;
     private Word word;
     private String currentDisplay = "";
@@ -56,7 +56,8 @@ public class Hangman extends JFrame implements ActionListener {
         wrongWordPanel.setPreferredSize(new Dimension(400, 600));
         inputPanel.setPreferredSize(new Dimension(1000, 60));
         characterBoxPanel.setPreferredSize(new Dimension(1000, 90));
-        textField.setPreferredSize(new Dimension(40, 40));
+        textField.setPreferredSize(new Dimension(45, 45));
+        
 
         // set color
         mainPanel.setBackground(Color.BLACK);
@@ -70,11 +71,12 @@ public class Hangman extends JFrame implements ActionListener {
                 input = textFieldValue.charAt(0);
                 guessChar(input, word);
                 String text = word.getWrongInput();
-                System.out.println("The string is " + text + " word.getWrong " + word.getWrongInput());
                 wrongInput.setText(text);
                 textField.setText("");
-                // wrongWordPanel.repaint();
-                // mainPanel.repaint();
+                currentLevel = word.hangmanState();
+                draw.updateLevel(currentLevel);
+                hangmanPanel.repaint();
+                
             }
         });
 
@@ -99,6 +101,8 @@ public class Hangman extends JFrame implements ActionListener {
         add(mainPanel);
 
     }
+
+    
 
     public void guessChar(char c, Word w) {
         // includedWord will return "1,2" if word apple and character is p
