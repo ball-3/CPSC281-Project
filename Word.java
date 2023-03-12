@@ -9,16 +9,16 @@ public class Word {
     private String categoryName;
     private int CharNum;
 
+    public String getWrongInput() {
+        return wrongInput.toString();
+    }
 
-public String getWrongInput() {
-    return wrongInput.toString();
-}
     Word(String word) {
         this.word = word;
     }
 
     Word(int level) {
-        
+
         String[] fruit = { "fruit", "apple", "banana", "blueberry", "orange", "mango", "lychee" };
         String[] popular_artist = { "popular artist", "Taylor Swift", "Billie Eilish", "Ariana Grande", "Adele",
                 "Olivia Rodrigo", "Dua Lipa", "Harry Styles" };
@@ -46,9 +46,10 @@ public String getWrongInput() {
         String[] picked = category.get(1);
         categoryName = picked[0];
         int rand;
-        while (true){
+        while (true) {
             rand = random.nextInt(picked.length);
-            if(rand !=0) break;
+            if (rand != 0)
+                break;
         }
         word = picked[rand];
         System.out.println(word);
@@ -64,9 +65,8 @@ public String getWrongInput() {
                 send.add(i);
             }
         }
-        if (send.size()==0)
-        wrongInput.insert(c);
-        
+        if (send.size() == 0)
+            wrongInput.insert(c);
 
         return send;
     }

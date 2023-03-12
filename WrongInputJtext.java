@@ -1,11 +1,11 @@
 import javax.swing.JTextField;
 import java.awt.*;
 
-public class WrongInputJtext extends JTextField{
+public class WrongInputJtext extends JTextField {
     String word;
 
-    public WrongInputJtext (String w){
-        this.word =w;
+    public WrongInputJtext(String w) {
+        this.word = w;
 
         setText(w);
         setEditable(true);
@@ -17,6 +17,5 @@ public class WrongInputJtext extends JTextField{
         this.word = word;
         setText(word);
     }
-    
 
 }

@@ -219,7 +219,7 @@ class BinarySearchTree {
     // recursion, display the node with inprder
     private void inOrder(Node localRoot) {
         if (localRoot != null) {
-        
+
             inOrder(localRoot.leftChild);
             output = output + localRoot.iData + " ";
 

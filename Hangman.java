@@ -49,7 +49,6 @@ public class Hangman extends JFrame implements ActionListener {
         textField.setFont(defult);
         JButton button = new JButton("submit");
         wrongInput = new WrongInputJtext(word.getWrongInput());
-        
 
         // size panel
         mainPanel.setPreferredSize(new Dimension(1000, 800));
@@ -74,8 +73,8 @@ public class Hangman extends JFrame implements ActionListener {
                 System.out.println("The string is " + text + " word.getWrong " + word.getWrongInput());
                 wrongInput.setText(text);
                 textField.setText("");
-                //wrongWordPanel.repaint();
-                //mainPanel.repaint();
+                // wrongWordPanel.repaint();
+                // mainPanel.repaint();
             }
         });
 

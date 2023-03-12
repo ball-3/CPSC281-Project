@@ -72,7 +72,7 @@ public class Draw extends JPanel {
             g2.drawLine(150, 50, 350, 50);
 
         }
-        if (level > 13) {//not sure
+        if (level > 13) {// not sure
             g2.drawLine(150, 50, 150, 350);
 
         }
