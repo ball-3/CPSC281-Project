@@ -19,12 +19,10 @@ public class CharacterBox extends JComponent {
         g2.setColor(Color.black);
         System.out.print(isGuessed + " c = " + boxWord + ", ");
         if (isGuessed) {
-            System.out.println("1");
-            g2.setFont(new Font("Verdana", Font.BOLD, 20));
-            g2.drawString(String.valueOf(boxWord), 20, 30);
+            g2.setFont(new Font("Verdana", Font.BOLD, 30));
+            g2.drawString(String.valueOf(boxWord), 15, 30);
         } else {
-            System.out.println("2");
-            g2.fillRect(0, 0, 30, 30);
+            g2.fillRect(0, 0, 40, 40);
 
         }
     }

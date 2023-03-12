@@ -9,8 +9,10 @@ public class Word {
     private String categoryName;
     private int CharNum;
 
-    
 
+public String getWrongInput() {
+    return wrongInput.toString();
+}
     Word(String word) {
         this.word = word;
     }
@@ -57,7 +59,7 @@ public class Word {
     public ArrayList<Integer> indexesOfCharacter(char c) {
         ArrayList<Integer> send = new ArrayList<Integer>();
         for (int i = 0; i < word.length(); i++) {
-            if (word.charAt(i) == c) {
+            if (word.charAt(i) == c || word.charAt(i) == Character.toUpperCase(c)) {
                 // tell gui to display the character
                 send.add(i);
             }

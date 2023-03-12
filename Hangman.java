@@ -16,6 +16,8 @@ public class Hangman extends JFrame implements ActionListener {
     private Word word;
     private String currentDisplay = "";
     private JPanel mainPanel;
+    private JPanel wrongWordPanel;
+    private WrongInputJtext wrongInput;
     CharacterBoxPanel characterBoxPanel;
 
     Hangman(Word w) {
@@ -35,18 +37,19 @@ public class Hangman extends JFrame implements ActionListener {
 
     public void createGUI() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Font defult = new Font("MS Comic Sans", Font.BOLD, 25);
+        Font defult = new Font("MS Comic Sans", Font.BOLD, 35);
 
         mainPanel = new JPanel(new BorderLayout());
         JPanel hangmanPanel = new JPanel();
-        JPanel wrongWordPanel = new JPanel();
+        wrongWordPanel = new JPanel();
         characterBoxPanel = new CharacterBoxPanel(this.word.getWord());
         JPanel inputPanel = new JPanel(new FlowLayout());
         JTextField textField = new JTextField();
         textField.setDocument(new JTextFieldLimit(1));
         textField.setFont(defult);
         JButton button = new JButton("submit");
-        JLabel wrongInput = new JLabel();
+        wrongInput = new WrongInputJtext(word.getWrongInput());
+        
 
         // size panel
         mainPanel.setPreferredSize(new Dimension(1000, 800));
@@ -59,8 +62,7 @@ public class Hangman extends JFrame implements ActionListener {
         // set color
         mainPanel.setBackground(Color.BLACK);
         hangmanPanel.setBackground(Color.white);
-        wrongWordPanel.setBackground(Color.CYAN);
-        characterBoxPanel.setBackground(Color.red);
+        wrongWordPanel.setBackground(Color.white);
 
         // provide input
         button.addActionListener(new ActionListener() {
@@ -68,8 +70,12 @@ public class Hangman extends JFrame implements ActionListener {
                 String textFieldValue = textField.getText();
                 input = textFieldValue.charAt(0);
                 guessChar(input, word);
-
+                String text = word.getWrongInput();
+                System.out.println("The string is " + text + " word.getWrong " + word.getWrongInput());
+                wrongInput.setText(text);
                 textField.setText("");
+                //wrongWordPanel.repaint();
+                //mainPanel.repaint();
             }
         });
 
@@ -82,6 +88,7 @@ public class Hangman extends JFrame implements ActionListener {
         // wrong input
         wrongWordPanel.setLayout(new BoxLayout(wrongWordPanel, BoxLayout.Y_AXIS));
         JLabel discription = new JLabel("Wrong input");
+        discription.setFont(defult);
         wrongWordPanel.add(discription);
         wrongWordPanel.add(wrongInput);
 
