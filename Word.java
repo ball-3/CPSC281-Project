@@ -26,8 +26,8 @@ public class Word {
         String[] fruit = { "fruit", "apple", "banana", "blueberry", "orange", "mango", "lychee" };
         String[] popular_artist = { "popular artist", "Taylor Swift", "Billie Eilish", "Ariana Grande", "Adele",
                 "Olivia Rodrigo", "Dua Lipa", "Harry Styles" };
-        String[] computer_science = { "computer science", "linked list", "skip list", "recursion","queues", "stack", "heap" 
-    , "AVL tree", "Warshalls Algorithm", "Floyd's algorithm"};
+        String[] computer_science = { "computer science", "linked list", "skip list", "recursion", "queues", "stack",
+                "heap", "AVL tree", "Warshalls Algorithm", "Floyd's algorithm" };
         category.add(fruit);
         category.add(popular_artist);
         category.add(computer_science);
@@ -60,7 +60,7 @@ public class Word {
 
     private void generateNewRandomWord() {
         Random random = new Random();
-        String[] picked = category.get(2);//computer science
+        String[] picked = category.get(2);// computer science
         categoryName = picked[0];
         int rand;
         while (true) {

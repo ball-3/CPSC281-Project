@@ -62,6 +62,7 @@ public class Hangman extends JFrame implements ActionListener {
         mainPanel.setBackground(Color.BLACK);
         hangmanPanel.setBackground(Color.white);
         wrongWordPanel.setBackground(Color.white);
+        inputPanel.setBackground(Color.white);
 
         // provide input
         button.addActionListener(new ActionListener() {
