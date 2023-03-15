@@ -1,62 +1,35 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Word {
-    private Tree wrongInput;
-    private String word = "";
-    private ArrayList<String[]> category = new ArrayList<String[]>();
-    private String categoryName;
-    private int CharNum;
 
-    Word(String word) {
-        this.word = word;
+    public char[] word;
+    String stringWord;
+    int lettersLeft;
+
+    public Word(){
+        stringWord = "";
+        lettersLeft = 0;
     }
 
-    Word(int level) {
-        generateNewRandomWord(level);
-        String[] fruit = { "fruit", "apple", "banana", "blueberry", "orange", "mango", "lychee" };
-        String[] popular_artist = { "popular artist", "Taylor Swift", "Billie Eilish", "Ariana Grande", "Adele",
-                "Olivia Rodrigo", "Dua Lipa", "Harry Styles" };
-        String[] computer_science = { "computer science", "linked list", "skip list", "recursion", };
-        category.add(fruit);
-        category.add(popular_artist);
-        category.add(computer_science);
+    public void setWord(String newWord){
+        stringWord = newWord;
+        word = new char[stringWord.length()];
+        for(int i = 0; i< newWord.length(); i++){
+            word [i] = newWord.charAt(i);
+        }
+        lettersLeft = stringWord.length();
     }
 
-    public String getWord() {
-        return word;
-    }
+    public ArrayList<Integer> checkLetter(char x){
+        ArrayList<Integer> correctGuessIndexes = new ArrayList<>();
 
-    public int getWrongNum() {
-        return wrongInput.getSize();
-    }
-
-    public int getCharNum() {
-        return word.length();
-    }
-
-    private void generateNewRandomWord(int level) {
-        Random random = new Random();
-        String[] picked = category.get(random.nextInt(category.size()));
-        categoryName = picked[0];
-        word = picked[random.nextInt(1, picked.length)];
-
-    }
-
-    // maybe void
-    public String includedWord(char c) {
-        String send = "";
-        for (int i = 0; i < word.length(); i++) {
-            if (word.indexOf(i) == c) {
-                // tell gui to display the character
-                // apple -> P -> "p1p2"
-                send = send + "," + i;
+        for(int i = 0; i < Player.word.word.length; i++){
+            if (word[i] == x) {
+                correctGuessIndexes.add(i);
+                lettersLeft -= 1;
             }
         }
-        wrongInput.insert(c);
 
-        return null;
+        return correctGuessIndexes;
     }
-
 }
