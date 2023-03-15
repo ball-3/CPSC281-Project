@@ -7,5 +7,10 @@ Player guesser;
     this.guesser = guesser;
     guesser.guess();
     }
+    
+    public Guess getGuess()
+    {   
+    // ? w ?
+    }
 
 }

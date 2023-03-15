@@ -2,20 +2,19 @@ public class Guess
 {
 boolean isCorrect;  //plis rename ;-;
 char guessedLetter;
-string word;
+//access char arraylist.
 char[] letters;
 
-    public Guess(char guessedLetter, string word)
+    public Guess(char guessedLetter)
     {
-    this.word = word;
     this.guessedLetter = guessedLetter;
+    letters = //char arraylist, or just use arraylist here.
     checkCorrectness();
     }
     
     //atm it just checks correctness but this could be modified so that it returns an array of where the letter is, if that would be helpful (for hangman class?)    
     private void checkCorrectness()
     {
-    letters = word.toCharArray();
     
     for(int i = 0; i < letters.length; i++)
         {
@@ -26,5 +25,15 @@ char[] letters;
             }
         }
     isCorrect = false;
+    }
+    
+    public boolean isCorrect()
+    {
+    return isCorrect;
+    }
+    
+    public char guessedLetter()
+    {
+    return guessedLetter;
     }
 }

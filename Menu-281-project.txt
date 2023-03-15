@@ -1,25 +1,62 @@
-public void Menu
+public void Menu implements ActionListener
 {
 JFrame startFrame;
+JFrame settingsFrame;
+JButton startButton;
+JButton settingsButton;
+Game game;
+String actionCommand;
 //should have some kind of documentation for the gamemode options and the associated numbers
 int array gamemode = new int[//size of number of gamemode options];
+
+//frame 1000 by 800
     
 
     private void makeStartFrame()
     {
-    JFrame startFrame = new JFrame();
-    startFrame.setLayout(); // what layout will i pick ? 
+    startFrame = new JFrame(new GridBagLayout());
+    GridBagConstraints constraints = new GridBagConstraints();
+    //set the constraints
     
-    //insert the button, image
+    //insert the buttons, ?image?
+    startFrame.add(startButton);
+    startButton.setActionCommand("start");
+    startFrame.add(settingsButton);
+    settingsButton.setActionCommand("settings");
     
     startFrame.setVisible(true);
     }
     
-    //there will be other methods here
+    private void makeSettingsFrame()
+    {
+    settingsFrame = new JFrame(//layout?);
+    }
     
+    //there will be other methods here
+    /*
+    Gamemode Settings:
+    Array Index:    Information Stored Here:        Equivalence to Int Value:
+            0               null                        null
+            1       if player1 is human/computer        0 - computer, 1 - human     note: player1 is always picker.
+            2       if player2 is human/computer        0 - computer, 1 - human
+            3               null so far
+    */
     public int[] getGamemode()
     {
     return gamemode;
     }
-
+       
+     //this is assuming this is only called when the appropriate button is clicked, sort out having different ActionPerformed methods for different buttons
+    public void ActionPerformed(ActionEvent e)
+    {
+    //set/ get actioncommand ?
+    actionCommand = e.getActionCommand();
+    if (actionCommand == "start")   game = new Game(gamemode);
+    if (actionCommand == "settings")
+    {
+    //settings tings 
+    //settings frame ?
+    }
+    //do i need to close or clear the frame/ window now ?
+    }
 }
