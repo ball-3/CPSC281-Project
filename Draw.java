@@ -165,6 +165,7 @@ public class Draw extends JPanel {
         }
         if (level > 22) {
             g2.drawLine(350, 250, 370, 310);
+            //game over
         }
 
     }

@@ -19,6 +19,7 @@ public class Hangman extends JFrame implements ActionListener {
     private JPanel wrongWordPanel;
     private WrongInputJtext wrongInput;
     CharacterBoxPanel characterBoxPanel;
+    private JPanel hangmanPanel;
 
     Hangman(Word w) {
         this.draw = new Draw(currentLevel);
@@ -40,7 +41,7 @@ public class Hangman extends JFrame implements ActionListener {
         Font defult = new Font("MS Comic Sans", Font.BOLD, 35);
 
         mainPanel = new JPanel(new BorderLayout());
-        JPanel hangmanPanel = new JPanel();
+        hangmanPanel = new JPanel();
         wrongWordPanel = new JPanel();
         characterBoxPanel = new CharacterBoxPanel(this.word.getWord());
         JPanel inputPanel = new JPanel(new FlowLayout());
@@ -73,6 +74,7 @@ public class Hangman extends JFrame implements ActionListener {
                 String text = word.getWrongInput();
                 wrongInput.setText(text);
                 textField.setText("");
+               
                 currentLevel = word.hangmanState();
                 draw.updateLevel(currentLevel);
                 hangmanPanel.repaint();
@@ -93,11 +95,14 @@ public class Hangman extends JFrame implements ActionListener {
         wrongWordPanel.add(discription);
         wrongWordPanel.add(wrongInput);
 
+        //test
+
         // add everything
         mainPanel.add(characterBoxPanel, BorderLayout.PAGE_END);
-        mainPanel.add(hangmanPanel, BorderLayout.CENTER);
         mainPanel.add(wrongWordPanel, BorderLayout.LINE_START);
         mainPanel.add(inputPanel, BorderLayout.PAGE_START);
+        mainPanel.add(hangmanPanel, BorderLayout.CENTER);
+
         add(mainPanel);
 
     }
@@ -118,12 +123,19 @@ public class Hangman extends JFrame implements ActionListener {
                 currentDisplay = string.toString();
 
             }
+
+            currentLevel = word.hangmanState();
+                draw.updateLevel(currentLevel);
+                hangmanPanel.repaint();
             characterBoxPanel.updateCharBoxes(currentDisplay);
             mainPanel.repaint();
             System.out.println(currentDisplay);
 
+            
+
             changed = true;
         }
+
 
     }
 

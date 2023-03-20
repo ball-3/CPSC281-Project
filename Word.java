@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Word {
-    private BinarySearchTree wrongInput = new BinarySearchTree();
+    private AVL wrongInput = new AVL();
     private String word = "";
     private ArrayList<String[]> category = new ArrayList<String[]>();
     private String categoryName;
