@@ -442,9 +442,15 @@ class AVL {
 
                 break;
             case 'L':
-                b = a.leftChild;
-                br = b.rightChild;
-                b.rightChild = a;
+                if(a!=null){
+                    b = a.leftChild;
+                    br = b.rightChild;
+                    b.rightChild = a;
+                }else{
+                    b = null;
+                    br = null;
+                }
+
                 a.leftChild = br;
                 //parent
                 a.parent = b;

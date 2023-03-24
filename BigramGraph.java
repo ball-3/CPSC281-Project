@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BigramGraph {
-    ArrayList<Letter> listOfLetters;
+   public ArrayList<Letter> listOfLetters;
     public BigramGraph(){
         Letter a = new Letter('a');
         Letter b = new Letter('b');

@@ -8,6 +8,7 @@ public class Main {
 
         Hangman display = new Hangman(word, true);
 
+        display.setVisible(false);
         display.setSize(1000, 650);
         display.setTitle("project");
         display.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

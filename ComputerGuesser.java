@@ -7,12 +7,14 @@ public class ComputerGuesser extends Player{
     Letter letterToGuess;
     Letter nextLetterToGuess;
     Random rand;
+    ArrayList<Letter> listOfGuessedLetters;
 
     public ComputerGuesser(){
+        listOfGuessedLetters = new ArrayList<>();
         bigramGraph = new BigramGraph();
         currentLetter = null;
         letterToGuess = null;
-        nextLetterToGuess = bigramGraph.listOfLetters.get(4); // 'e'
+        nextLetterToGuess = null;
         rand = new Random();
     }
 
@@ -24,8 +26,10 @@ public class ComputerGuesser extends Player{
             getNewLetterToGuess();
         }
 
-        System.out.println("Guessed letter: " + guessedLetter);
+        System.out.println("\nGuessed letter: " + guessedLetter);
         correctGuessIndexes = checkLetter(guessedLetter);
+
+        listOfGuessedLetters.add(currentLetter);
 
         if(correctGuessIndexes.isEmpty()){
             guessedLetterCorrect = false;
@@ -42,10 +46,11 @@ public class ComputerGuesser extends Player{
         }
 
 
-        if(word.lettersLeft == 0){
-            wordIsGuessed = true;
-            System.out.println("\nI got the correct word!");
-        }
+
+//        if(word.lettersLeft == 0){
+//            wordIsGuessed = true;
+//            System.out.println("\nI got the correct word!");
+//        }
     }
 
     public ArrayList<Integer> checkLetter(char x){
@@ -54,7 +59,7 @@ public class ComputerGuesser extends Player{
 
 
     public void getNewLetterToGuess(){
-        int index = rand.nextInt(bigramGraph.listOfLetters.size());
+        int index = rand.nextInt(bigramGraph.listOfLetters.size() - 1);
 
         Letter letter = bigramGraph.listOfLetters.get(index);
         currentLetter = letter;
@@ -63,9 +68,14 @@ public class ComputerGuesser extends Player{
     }
 
     public void getNextLetterToGuess(){
-        for(Letter l : currentLetter.pointers){
-            if(l == null){
-                currentLetter.pointers.remove(null);
+        if(!currentLetter.pointers.isEmpty()){
+            for(int j = 0; j < bigramGraph.listOfLetters.size(); j++) {
+                Letter l = bigramGraph.listOfLetters.get(j);
+                for (int i = 0; i < listOfGuessedLetters.size(); i++) {
+                    if (listOfGuessedLetters.get(i) == l) {
+                        currentLetter.pointers.remove(l);
+                    }
+                }
             }
         }
 

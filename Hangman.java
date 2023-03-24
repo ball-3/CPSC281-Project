@@ -20,15 +20,13 @@ public class Hangman extends JFrame implements ActionListener {
     CharacterBoxPanel characterBoxPanel;
     private JPanel hangmanPanel;
     private boolean isCompGuesser;
-    private HumanGuesser humGuesser;
     private ComputerGuesser compGuesser;
 
 
-    Hangman(Word w, boolean iCP) {
-        isCompGuesser = iCP;
-        humGuesser = new HumanGuesser();
+    Hangman(Word w, boolean iCG) {
+        isCompGuesser = iCG;
         compGuesser = new ComputerGuesser();
-
+        Player.word = w;
         this.draw = new Draw(currentLevel);
         this.word = w;
         // if the word is apple, it will makes currentDispay = "00000"
@@ -103,6 +101,7 @@ public class Hangman extends JFrame implements ActionListener {
                 String text = word.getWrongInput();
                 wrongInput.setText(text);
                 textField.setText("");
+                hangmanPanel.repaint();
 
                 currentLevel = word.hangmanState();
                 draw.updateLevel(currentLevel);
@@ -116,7 +115,7 @@ public class Hangman extends JFrame implements ActionListener {
         inputPanel.add(Box.createHorizontalStrut(150));
         inputPanel.add(button);
         hangmanPanel.add(draw);
-
+        hangmanPanel.repaint();
         // wrong input
         wrongWordPanel.setLayout(new BoxLayout(wrongWordPanel, BoxLayout.Y_AXIS));
         JLabel discription = new JLabel("Wrong input");
