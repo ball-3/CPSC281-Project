@@ -20,7 +20,6 @@ public class Hangman extends JFrame implements ActionListener {
     private WrongInputJtext wrongInput;
     CharacterBoxPanel characterBoxPanel;
     private JPanel hangmanPanel;
-    
 
     Hangman(Word w) {
         this.draw = new Draw(currentLevel);
@@ -36,10 +35,10 @@ public class Hangman extends JFrame implements ActionListener {
         }
         createGUI();
     }
-    
-    public boolean CheckGame() { //check clear or not
-        for (int i = 0; i < currentDisplay.length(); i++){
-            if (currentDisplay.charAt(i)=='0'){
+
+    public boolean CheckGame() { // check clear or not
+        for (int i = 0; i < currentDisplay.length(); i++) {
+            if (currentDisplay.charAt(i) == '0') {
                 return false;
             }
         }
@@ -85,10 +84,24 @@ public class Hangman extends JFrame implements ActionListener {
                 String text = word.getWrongInput();
                 wrongInput.setText(text);
                 textField.setText("");
-               
+
                 currentLevel = word.hangmanState();
                 draw.updateLevel(currentLevel);
                 hangmanPanel.repaint();
+
+                if (CheckGame()) {
+                    mainPanel.setVisible(false);
+                    mainPanel = new GameoverPanel(true);
+                    mainPanel.repaint();
+                    mainPanel.setVisible(true);
+
+                } else if (word.getGameOver()) {
+                    mainPanel.setVisible(false);
+                    mainPanel = new GameoverPanel(false);
+                    mainPanel.repaint();
+                    mainPanel.setVisible(true);
+
+                }
 
             }
         });
@@ -106,7 +119,7 @@ public class Hangman extends JFrame implements ActionListener {
         wrongWordPanel.add(discription);
         wrongWordPanel.add(wrongInput);
 
-        //test
+        // test
 
         // add everything
         mainPanel.add(characterBoxPanel, BorderLayout.PAGE_END);
@@ -136,17 +149,14 @@ public class Hangman extends JFrame implements ActionListener {
             }
 
             currentLevel = word.hangmanState();
-                draw.updateLevel(currentLevel);
-                hangmanPanel.repaint();
+            draw.updateLevel(currentLevel);
+            hangmanPanel.repaint();
             characterBoxPanel.updateCharBoxes(currentDisplay);
             mainPanel.repaint();
             System.out.println(currentDisplay);
 
-            
-
             changed = true;
         }
-
 
     }
 
