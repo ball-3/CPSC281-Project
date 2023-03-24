@@ -1,0 +1,153 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Menu implements ActionListener
+{
+        JPanel panel;
+        GridBagConstraints constraints;
+        JButton startButton;
+        JButton settingsButton;
+        JButton backButton;
+        //could be swapped for an image for fancier menu
+        JTextField title;
+        Font butttonFont = new Font("Arial Bold", 0, 48);
+        Font fontTwo = new Font("Arial Bold", 0, 20);
+        Game game;
+        String actionCommand;
+        //should have some kind of documentation for the gamemode options and the associated numbers
+        int[] gamemode = new int[/*size of number of gamemode options*/3];
+
+        //frame 1000 by 800
+        public Menu()
+        {
+                //TODO initialise gamemode to some default gamemode
+                panel = new JPanel();
+                constraints = new GridBagConstraints();
+                makeStartPanel();
+        }
+
+        public JPanel getPanel()
+        {
+                return panel;
+        }
+
+        private void makeStartPanel()
+        {
+                panel.removeAll();
+                panel.repaint();
+                panel.setLayout(new GridBagLayout());
+                //insert the buttons, ?image?// title
+
+                setupTitle();
+                        constraints.gridwidth = 3;
+                        constraints.gridx = 1;
+                        constraints.gridy = 1;
+                        constraints.weightx = 0.6;
+                        constraints.weighty = 0.3;
+                panel.add(title, constraints);
+
+                setupButtons();
+                        constraints.gridwidth = 3;
+                        constraints.gridx = 1;
+                        constraints.gridy = 2;
+                        constraints.weightx = 0.4;
+                        constraints.weighty = 0.2;
+                panel.add(startButton, constraints);
+                        constraints.gridwidth = 3;
+                        constraints.gridx = 1;
+                        constraints.gridy = 3;
+                        constraints.weightx = 0.4;
+                        constraints.weighty = 0.2;
+                panel.add(settingsButton, constraints);
+                //panel.setVisible(true);
+        }
+
+        private void makeSettingsPanel()
+        {
+                panel.removeAll();
+                panel.repaint();
+                panel.setLayout(new GridLayout(5,5));
+                //panel.setBackground(Color.LIGHT_GRAY);
+                setupSettingsComponents();
+                panel.add(backButton);
+                panel.repaint();
+        }
+
+        private void setupSettingsComponents()
+        {
+                backButton = new JButton();
+                backButton.addActionListener(this);
+                backButton.setActionCommand("back");
+                backButton.setFont(fontTwo);
+                backButton.setPreferredSize(new Dimension(200,70));
+                backButton.setText("Back");
+
+        }
+
+        private void setupTitle()
+        {
+                title = new JTextField();
+                title.setEditable(false);
+                title.setFont(new Font("Arial Bold", 0, 98));
+                //title.setPreferredSize(new Dimension(700,260));
+                title.setText("Hangman");
+        }
+
+        private void setupButtons()
+        {
+                startButton = new JButton();
+                startButton.addActionListener(this);
+                startButton.setActionCommand("start");
+                startButton.setFont(butttonFont);
+                startButton.setPreferredSize(new Dimension(500,140));
+                startButton.setText("Start");
+
+                settingsButton = new JButton();
+                settingsButton.addActionListener(this);
+                settingsButton.setActionCommand("settings");
+                settingsButton.setFont(butttonFont);
+                settingsButton.setPreferredSize(new Dimension(500,140));
+                settingsButton.setText("Settings");
+        }
+
+        //there will be other methods here
+    /*
+    Gamemode Settings:
+    Array Index:    Information Stored Here:        Equivalence to Int Value:
+            0               null                        null
+            1       if player1 is human/computer        0 - computer, 1 - human     note: player1 is always picker.
+            2       if player2 is human/computer        0 - computer, 1 - human
+            3               null so far
+    */
+        public int[] getGamemode()
+        {
+                return gamemode;
+        }
+
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+                //set/ get actioncommand ?
+                System.out.println("action");
+                actionCommand = e.getActionCommand();
+                if (actionCommand == "start")
+                {
+                        System.out.println("start");
+                        //makeGamePanel or whatever
+                        game = new Game(gamemode);
+                }
+                if (actionCommand == "settings")
+                {
+                        System.out.println("settings");
+                        makeSettingsPanel();
+                }
+                if (actionCommand == "back")
+                {
+                        System.out.println("back");
+                        makeStartPanel();
+                }
+                //do i need to close or clear the Panel/ window now ?
+        }
+}
