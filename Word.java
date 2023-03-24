@@ -17,8 +17,12 @@ public class Word {
         return wrongInput.toString();
     }
 
-    Word(String word) {
+    Word(String word, int level) {
         this.word = word;
+        limitMistake = (level - 27) * -1;
+        System.out.println("limit is " + limitMistake + "   level is " + level);
+        stepSize = 27 / limitMistake;
+        nextState = 27 % limitMistake;
     }
 
     Word(int level) {
@@ -76,7 +80,7 @@ public class Word {
     public ArrayList<Integer> indexesOfCharacter(char c) {
         ArrayList<Integer> send = new ArrayList<Integer>();
         for (int i = 0; i < word.length(); i++) {
-            if (word.charAt(i) == c || word.charAt(i) == Character.toUpperCase(c)) {
+            if (word.charAt(i) == c || word.charAt(i) == Character.toUpperCase(c)||word.charAt(i) == Character.toLowerCase(c)) {
                 // tell gui to display the character
                 send.add(i);
             }
