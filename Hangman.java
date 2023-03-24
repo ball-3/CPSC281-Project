@@ -20,6 +20,7 @@ public class Hangman extends JFrame implements ActionListener {
     private WrongInputJtext wrongInput;
     CharacterBoxPanel characterBoxPanel;
     private JPanel hangmanPanel;
+    
 
     Hangman(Word w) {
         this.draw = new Draw(currentLevel);
@@ -34,6 +35,16 @@ public class Hangman extends JFrame implements ActionListener {
             }
         }
         createGUI();
+    }
+    
+    public boolean CheckGame() { //check clear or not
+        for (int i = 0; i < currentDisplay.length(); i++){
+            if (currentDisplay.charAt(i)=='0'){
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public void createGUI() {
