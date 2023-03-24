@@ -1,8 +1,7 @@
 import javax.swing.*;
-import javax.swing.text.*;
-
-import org.w3c.dom.Text;
-
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,8 +19,16 @@ public class Hangman extends JFrame implements ActionListener {
     private WrongInputJtext wrongInput;
     CharacterBoxPanel characterBoxPanel;
     private JPanel hangmanPanel;
+    private boolean isCompGuesser;
+    private HumanGuesser humGuesser;
+    private ComputerGuesser compGuesser;
 
-    Hangman(Word w) {
+
+    Hangman(Word w, boolean iCP) {
+        isCompGuesser = iCP;
+        humGuesser = new HumanGuesser();
+        compGuesser = new ComputerGuesser();
+
         this.draw = new Draw(currentLevel);
         this.word = w;
         // if the word is apple, it will makes currentDispay = "00000"
@@ -34,6 +41,16 @@ public class Hangman extends JFrame implements ActionListener {
             }
         }
         createGUI();
+    }
+
+    public boolean CheckGame() { //check clear or not
+        for (int i = 0; i < currentDisplay.length(); i++){
+            if (currentDisplay.charAt(i)=='0'){
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public void createGUI() {
@@ -69,12 +86,24 @@ public class Hangman extends JFrame implements ActionListener {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 String textFieldValue = textField.getText();
-                input = textFieldValue.charAt(0);
+
+                if(isCompGuesser){
+                    // computer is guesser
+                    compGuesser.guessLetter();
+                    input = Player.guessedLetter;
+
+                }else{
+                    // human is guesser
+                    input = textFieldValue.charAt(0);
+                    Player.guessedLetter = input;
+                }
+
                 guessChar(input, word);
+
                 String text = word.getWrongInput();
                 wrongInput.setText(text);
                 textField.setText("");
-               
+
                 currentLevel = word.hangmanState();
                 draw.updateLevel(currentLevel);
                 hangmanPanel.repaint();
@@ -125,13 +154,13 @@ public class Hangman extends JFrame implements ActionListener {
             }
 
             currentLevel = word.hangmanState();
-                draw.updateLevel(currentLevel);
-                hangmanPanel.repaint();
+            draw.updateLevel(currentLevel);
+            hangmanPanel.repaint();
             characterBoxPanel.updateCharBoxes(currentDisplay);
             mainPanel.repaint();
             System.out.println(currentDisplay);
 
-            
+
 
             changed = true;
         }

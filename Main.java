@@ -1,6 +1,4 @@
-import javax.print.attribute.standard.PageRanges;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class Main {
 
@@ -8,7 +6,7 @@ public class Main {
 
         Word word = new Word(20);
 
-        Hangman display = new Hangman(word);
+        Hangman display = new Hangman(word, true);
 
         display.setSize(1000, 650);
         display.setTitle("project");
