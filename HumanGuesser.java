@@ -16,7 +16,7 @@ public class HumanGuesser extends Player {
 
     // checks letter of word
     public ArrayList<Integer> checkLetter(char x){
-        return word.checkLetter(x);
+        return word.indexesOfCharacter(x);
     }
 
     public void setComputerDifficulty(int difficulty){

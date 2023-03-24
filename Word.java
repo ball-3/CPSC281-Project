@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,6 +7,8 @@ public class Word {
     private ArrayList<String[]> category = new ArrayList<String[]>();
     private String categoryName;
     private int CharNum;
+    public int lettersLeft;
+
     // use for hangman
     private int limitMistake;
     private int stepSize;
@@ -58,7 +59,7 @@ public class Word {
         return word.length();
     }
 
-    private void generateNewRandomWord() {
+    public void generateNewRandomWord() {
         Random random = new Random();
         String[] picked = category.get(2);// computer science
         categoryName = picked[0];
@@ -69,6 +70,7 @@ public class Word {
                 break;
         }
         word = picked[rand];
+        lettersLeft = word.length();
         System.out.println(word);
 
     }
@@ -79,6 +81,7 @@ public class Word {
             if (word.charAt(i) == c || word.charAt(i) == Character.toUpperCase(c)) {
                 // tell gui to display the character
                 send.add(i);
+                lettersLeft -= 1;
             }
         }
         if (send.size() == 0)

@@ -5,7 +5,7 @@ public class Player {
     static ArrayList<Integer> correctGuessIndexes;
     static boolean guessedLetterCorrect;
     static char[] correctGuesses;
-    static Word word = new Word();
+    static Word word = new Word(1);
     static Hangman hangmanObject;
     static int computerDifficulty;
     static boolean wordIsGuessed = false;

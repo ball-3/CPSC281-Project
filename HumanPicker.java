@@ -2,13 +2,13 @@ public class HumanPicker extends Player{
 
     // sets word to be guessed, can be done through scanner
     public void setWord(String word){
-        super.word.setWord(word);
+        super.word = new Word(word);
         correctGuesses = new char[word.length()];
     }
 
     // draws body part on hangman
     public void drawBodyPart(){
-        hangmanObject.addDrawnBodyPart();
+        hangmanObject.guessChar(guessedLetter, word);
     }
 
     public void seeIfGuessedLetterIsCorrect(){

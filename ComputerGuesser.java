@@ -49,7 +49,7 @@ public class ComputerGuesser extends Player{
     }
 
     public ArrayList<Integer> checkLetter(char x){
-        return word.checkLetter(x);
+        return word.indexesOfCharacter(x);
     }
 
 
