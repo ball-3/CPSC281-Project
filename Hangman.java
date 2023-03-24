@@ -91,15 +91,13 @@ public class Hangman extends JFrame implements ActionListener {
 
                 if (CheckGame()) {
                     mainPanel.setVisible(false);
-                    mainPanel = new GameoverPanel(true);
-                    mainPanel.repaint();
-                    mainPanel.setVisible(true);
+                    JPanel gameOver = new GameoverPanel(true);
+                    add(gameOver);
 
                 } else if (word.getGameOver()) {
                     mainPanel.setVisible(false);
-                    mainPanel = new GameoverPanel(false);
-                    mainPanel.repaint();
-                    mainPanel.setVisible(true);
+                    JPanel gameClear = new GameoverPanel(false);
+                    add(gameClear);
 
                 }
 
