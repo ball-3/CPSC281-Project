@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+//TODO if we have time, make this a jpanel rather than frame and insert into main frame (see main ? may have to rearrange things)
 public class Hangman extends JFrame implements ActionListener {
 
     private Draw draw;
