@@ -33,6 +33,7 @@ public class Game {
     private void formatHangman()
     {
         man.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        man.setSize(1000,650);      //TODO is this the final sizee ? no but should be fixed (removed) with the frame fixing
         man.setVisible(true);
     }
 }
