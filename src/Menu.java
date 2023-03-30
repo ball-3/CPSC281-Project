@@ -231,10 +231,11 @@ public class Menu implements ActionListener
                 if (actionCommand == "start")
                 {
                         //TODO start the right game not jsut randome
-                        Hangman man = new Hangman(new Word(25));
-                        man.setSize(1000,650);
-                        man.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                        man.setVisible(true);
+                        //TODO make a Hangman man *in* Game, not here (if gamemode is appropriate)
+//                                 Hangman man = new Hangman(new Word(25));
+//                                 man.setSize(1000,650);
+//                                 man.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                                 man.setVisible(true);
                         //TODO delete old jframe frame.dispose()
                         game = new Game(gamemode);
                 }
