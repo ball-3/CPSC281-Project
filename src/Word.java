@@ -26,8 +26,7 @@ public class Word {
         nextState = 27 % limitMistake;
     }
 
-    //TODO add arg for selecting word category here
-    Word(int level) {
+    Word(int level, int category) {
 
         String[] fruit = { "fruit", "apple", "banana", "blueberry", "orange", "mango", "lychee" };
         String[] popular_artist = { "popular artist", "Taylor Swift", "Billie Eilish", "Ariana Grande", "Adele",
@@ -37,7 +36,7 @@ public class Word {
         category.add(fruit);
         category.add(popular_artist);
         category.add(computer_science);
-        generateNewRandomWord();
+        generateNewRandomWord(int category);
         limitMistake = (level - 27) * -1;
         System.out.println("limit is " + limitMistake + "   level is " + level);
         stepSize = 27 / limitMistake;
@@ -68,10 +67,9 @@ public class Word {
         return word.length();
     }
 
-    //TODO add argument for selecting category here
-    private void generateNewRandomWord() {
+    private void generateNewRandomWord(int category) {
         Random random = new Random();
-        String[] picked = category.get(2);// computer science
+        String[] picked = category.get(category);
         categoryName = picked[0];
         int rand;
         while (true) {
