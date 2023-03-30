@@ -11,13 +11,19 @@ public class Game {
             word = new word(gamemode[3], gamemode[4])
         }
         
-        //if gamemode[1] == 1;      //picker is human
+        else if gamemode[1] == 1;      //picker is human
+        {
         //can we add a prompt so user can pick a word here ?
-
-        //if gamemode[2] == 0;      //guesser is computer
-        //complex case, TODO implement lol
-
-        if gamemode[2] == 1;      //guesser is human
+        //like a f r a m  e or something
+        }
+            
+        if gamemode[2] == 0;      //guesser is computer
+        {
+        //complex case, TODO implement
+        //did katie have a solution for this ?
+        }
+            
+        else if gamemode[2] == 1;      //guesser is human
         {
         man = new Hangman(word);
         }
