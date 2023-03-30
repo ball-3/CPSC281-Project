@@ -26,6 +26,7 @@ public class Word {
         nextState = 27 % limitMistake;
     }
 
+    //TODO add arg for selecting word category here
     Word(int level) {
 
         String[] fruit = { "fruit", "apple", "banana", "blueberry", "orange", "mango", "lychee" };
@@ -67,6 +68,7 @@ public class Word {
         return word.length();
     }
 
+    //TODO add argument for selecting category here
     private void generateNewRandomWord() {
         Random random = new Random();
         String[] picked = category.get(2);// computer science
