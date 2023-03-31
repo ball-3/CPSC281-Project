@@ -1,26 +1,103 @@
-package src;
-
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Word {
+    private AVL wrongInput = new AVL();
+    private String word = "";
+    private ArrayList<String[]> category = new ArrayList<String[]>();
+    private String categoryName;
+    private int CharNum;
+    // use for hangman
+    private int limitMistake;
+    private int stepSize;
+    private int nextState = 0; // hangman drawing state
+    private boolean gameOver = false;
 
-    public char[] word;
-
-    public void setWord(String newWord){
-        word = new char[newWord.length()];
-        for(int i = 0; i< newWord.length(); i++){
-            word [i] = newWord.charAt(i);
-        }
+    public String getWrongInput() {
+        return wrongInput.toString();
     }
 
-    public ArrayList<Integer> checkLetter(char x){
-        ArrayList<Integer> correctGuessIndexes = new ArrayList<>();
+    Word(String word, int level) {
+        this.word = word;
+        limitMistake = (level - 27) * -1;
+        System.out.println("limit is " + limitMistake + "   level is " + level);
+        stepSize = 27 / limitMistake;
+        nextState = 27 % limitMistake;
+    }
 
-        for(int i = 0; i < Player.word.word.length; i++){
-            if (word[i] == x) {
-                correctGuessIndexes.add(i);
+    Word(int level, int category) {
+
+        String[] fruit = { "fruit", "apple", "banana", "blueberry", "orange", "mango", "lychee" };
+        String[] popular_artist = { "popular artist", "Taylor Swift", "Billie Eilish", "Ariana Grande", "Adele",
+                "Olivia Rodrigo", "Dua Lipa", "Harry Styles" };
+        String[] computer_science = { "computer science", "linked list", "skip list", "recursion", "queues", "stack",
+                "heap", "AVL tree", "Warshalls Algorithm", "Floyd's algorithm" };
+        category.add(fruit);
+        category.add(popular_artist);
+        category.add(computer_science);
+        generateNewRandomWord(int category);
+        limitMistake = (level - 27) * -1;
+        System.out.println("limit is " + limitMistake + "   level is " + level);
+        stepSize = 27 / limitMistake;
+        nextState = 27 % limitMistake;
+    }
+
+    public int hangmanState() {
+        if (wrongInput.getSize() == 0)
+            return 0;
+        nextState = stepSize * wrongInput.getSize();
+        System.out.println(nextState + " step is " + stepSize);
+        return nextState;
+    }
+
+    public boolean getGameOver() {
+        return gameOver;
+    }
+
+    public String getWord() {
+        return word;
+    }
+
+    public int getWrongNum() {
+        return wrongInput.getSize();
+    }
+
+    public int getCharNum() {
+        return word.length();
+    }
+
+    private void generateNewRandomWord(int category) {
+        Random random = new Random();
+        String[] picked = category.get(category);
+        categoryName = picked[0];
+        int rand;
+        while (true) {
+            rand = random.nextInt(picked.length);
+            if (rand != 0)
+                break;
+        }
+        word = picked[rand];
+        System.out.println(word);
+
+    }
+
+    public ArrayList<Integer> indexesOfCharacter(char c) {
+        ArrayList<Integer> send = new ArrayList<Integer>();
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) == c || word.charAt(i) == Character.toUpperCase(c)||word.charAt(i) == Character.toLowerCase(c)) {
+                // tell gui to display the character
+                send.add(i);
+
             }
         }
-        return correctGuessIndexes;
+        if (send.size() == 0)
+            wrongInput.insert(c);
+        if (wrongInput.getSize()>limitMistake){
+            gameOver = true;
+        }
+
+        return send;
     }
+
 }
