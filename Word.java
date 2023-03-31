@@ -50,7 +50,7 @@ public class Word {
         System.out.println(nextState + " step is " + stepSize);
         return nextState;
     }
-    
+
     public boolean getGameOver() {
         return gameOver;
     }
@@ -85,17 +85,18 @@ public class Word {
     public ArrayList<Integer> indexesOfCharacter(char c) {
         ArrayList<Integer> send = new ArrayList<Integer>();
         for (int i = 0; i < word.length(); i++) {
-            if (word.charAt(i) == c || word.charAt(i) == Character.toUpperCase(c)||word.charAt(i) == Character.toLowerCase(c)) {
+            if (word.charAt(i) == c || word.charAt(i) == Character.toUpperCase(c)
+                    || word.charAt(i) == Character.toLowerCase(c)) {
                 // tell gui to display the character
                 send.add(i);
-                
+
             }
         }
         if (send.size() == 0)
             wrongInput.insert(c);
-            if (wrongInput.getSize()>=limitMistake){
-                gameOver = true;
-            }
+        if (wrongInput.getSize() >= limitMistake) {
+            gameOver = true;
+        }
 
         return send;
     }
