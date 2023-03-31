@@ -26,6 +26,12 @@ public class Menu implements ActionListener
                 //TODO initialise gamemode to some default gamemode
                 panel = new JPanel();
 
+                //default settings:
+                gamemode[1] = 0;
+                gamemode[2] = 1;
+                gamemode[3] = 0;
+                gamemode[4] = 0;
+
                 makeStartPanel();
         }
 
@@ -45,25 +51,25 @@ public class Menu implements ActionListener
                 //insert the buttons, ?image?// title
 
                 setupTitle();
-                        constraints.gridwidth = 3;
-                        constraints.gridx = 1;
-                        constraints.gridy = 1;
-                        constraints.weightx = 0.6;
-                        constraints.weighty = 0.3;
+                constraints.gridwidth = 3;
+                constraints.gridx = 1;
+                constraints.gridy = 1;
+                constraints.weightx = 0.6;
+                constraints.weighty = 0.3;
                 panel.add(title, constraints);
 
                 setupButtons();
-                        constraints.gridwidth = 3;
-                        constraints.gridx = 1;
-                        constraints.gridy = 2;
-                        constraints.weightx = 0.4;
-                        constraints.weighty = 0.2;
+                constraints.gridwidth = 3;
+                constraints.gridx = 1;
+                constraints.gridy = 2;
+                constraints.weightx = 0.4;
+                constraints.weighty = 0.2;
                 panel.add(startButton, constraints);
-                        constraints.gridwidth = 3;
-                        constraints.gridx = 1;
-                        constraints.gridy = 3;
-                        constraints.weightx = 0.4;
-                        constraints.weighty = 0.2;
+                constraints.gridwidth = 3;
+                constraints.gridx = 1;
+                constraints.gridy = 3;
+                constraints.weightx = 0.4;
+                constraints.weighty = 0.2;
                 panel.add(settingsButton, constraints);
                 panel.setVisible(true);
         }
